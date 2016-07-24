@@ -43,21 +43,15 @@ public class Principal extends JFrame {
         add(pfSenha);
         add(btLogar);
         add(btCancelar);
+        
+        tfLogin.requestFocus();
     }
     
     private void definirEventos() {
         btLogar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String login = tfLogin.getText();
-                String senha = String.valueOf(pfSenha.getPassword());
-                UsuarioController controller = new UsuarioController();
-                if (controller.login(login, senha)) {
-                    frame.setVisible(false);
-                    UsuarioGUI.run();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Login ou Senha incorretos!");
-                }
+                logar();
             }
         });
         btCancelar.addActionListener(new ActionListener() {
@@ -66,6 +60,31 @@ public class Principal extends JFrame {
                 System.exit(0);
             }
         });
+        pfSenha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logar();
+            }
+        });
+    }
+    
+    private void limpar() {
+        tfLogin.setText("");
+        pfSenha.setText("");
+        tfLogin.requestFocus();
+    }
+    
+    private void logar() {
+        String login = tfLogin.getText();
+        String senha = String.valueOf(pfSenha.getPassword());
+        UsuarioController controller = new UsuarioController();
+        if (controller.login(login, senha)) {
+            frame.setVisible(false);
+            UsuarioGUI.run();
+        } else {
+            JOptionPane.showMessageDialog(null, "Login ou Senha incorretos!");
+            limpar();
+        }
     }
    
     public static void main(String[] args) {

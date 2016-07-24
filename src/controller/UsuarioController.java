@@ -22,7 +22,7 @@ public class UsuarioController {
     
     public boolean login(String login, String senha) {
         Usuario usuario = dao.findByLogin(login);
-        if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
+        if (usuario != null && usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
             return true;
         }
         return false;
