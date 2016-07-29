@@ -53,6 +53,26 @@ public class UsuarioGUI extends JFrame {
                 contentPane.removeAll();
                 contentPane.add(cadastrar);
                 contentPane.validate();
+            }           
+        });
+        miEditar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UsuarioEditarGui editar = new UsuarioEditarGui();
+                contentPane.removeAll();
+                contentPane.add(editar);
+                contentPane.validate();
+            }
+        });
+        miExcluir.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               UsuarioExcluirGui excluir = new UsuarioExcluirGui();
+               contentPane.removeAll();
+               contentPane.add(excluir);
+               contentPane.validate();
             }
         });
     }

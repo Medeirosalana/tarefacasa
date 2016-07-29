@@ -66,6 +66,7 @@ public class Principal extends JFrame {
                 logar();
             }
         });
+        
     }
     
     private void limpar() {
